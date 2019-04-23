@@ -1,5 +1,7 @@
 # vue-test
 
+A simple Todo app to familiarize myself with Vue
+
 ## Project setup
 ```
 yarn install
