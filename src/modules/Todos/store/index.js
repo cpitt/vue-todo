@@ -1,14 +1,40 @@
+import { createNamespacedHelpers } from 'vuex';
 import state from './state';
-import mutations from './mutations';
-import actions from './actions';
-import * as actionTypes from './actions/actionTypes';
-import * as mutationTypes from './mutations/mutationTypes';
+import mutations, { mutationTypes } from './mutations';
+import actions, { actionTypes } from './actions';
+import getters, { gettersTypes } from './getters';
+import loading from '@/shared/vuex/modules/loading';
 
-export { actionTypes, mutationTypes };
-export default {
-  namespaced: false,
+const namespace = 'TODOS';
+
+// create namepaced helpers to be exported from store for convenience
+const { mapActions, mapState, mapGetters } = createNamespacedHelpers(namespace);
+
+const module = {
+  namespaced: true,
   state,
   mutations,
   actions,
-  // getters,
+  getters,
+  modules: { loading },
 };
+
+const createStore = moduleNamespace => {
+  if (moduleNamespace) {
+    return { [moduleNamespace]: { ...module } };
+  }
+  return module;
+};
+
+export {
+  namespace,
+  createStore,
+  mapActions,
+  mapState,
+  mapGetters,
+  actionTypes,
+  mutationTypes,
+  gettersTypes,
+};
+// Export the namespaced module as default
+export default createStore(namespace);

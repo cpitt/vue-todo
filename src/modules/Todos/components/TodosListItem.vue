@@ -46,7 +46,7 @@ export default {
       this.$emit('todo-toggle', this.todo);
     },
     updateTodo(event) {
-      this.toggleIsEditing();
+      this.isEditing = false;
       this.$emit('todo-edit', this.todo, { title: event.target.value });
     },
   },

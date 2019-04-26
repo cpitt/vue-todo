@@ -1,9 +1,9 @@
+import axios from 'axios';
 // Fake service
 export const get = () =>
-  Promise.resolve([
-    { id: 1, title: 'do thing 1', complete: false },
-    { id: 2, title: 'do thing 2', complete: false },
-  ]);
+  axios
+    .get('https://jsonplaceholder.typicode.com/todos?userId=1')
+    .then(resp => resp.data);
 
 export const put = todo => Promise.resolve(todo);
 

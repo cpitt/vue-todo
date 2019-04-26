@@ -1,4 +1,4 @@
 export default (state, payload) => {
   const { todo } = payload;
-  return state.todos.push(todo);
+  state.todos = [...state.todos, todo];
 };

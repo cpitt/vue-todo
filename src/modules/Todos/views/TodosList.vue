@@ -1,24 +1,36 @@
 <template>
   <div>
-    <todos-list
-      :todos="todos"
-      @todo-toggle="toggleComplete"
-      @todo-edit="editTodo"
-    />
-    <todos-add-button @todos-add="addTodo()" />
+    <div v-if="isLoading">
+      <v-progress-circular
+        indeterminate
+        size="75"
+        class="loading-indicator"
+        color="primary"
+      />
+    </div>
+    <div v-else>
+      <todos-list
+        :todos="todos"
+        @todo-toggle="toggleComplete"
+        @todo-edit="editTodo"
+      />
+      <todos-add-button @todos-add="addTodo()" />
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
 import TodosList from '../components/TodosList.vue';
 import TodosAddButton from '../components/TodosAddButton.vue';
-import { actionTypes } from '../store';
+import { mapActions, mapState, actionTypes } from '../store';
 
 export default {
   components: { TodosList, TodosAddButton },
   computed: {
-    ...mapState({ todos: state => state.todos.todos }),
+    ...mapState({
+      todos: 'todos',
+      isLoading: state => state.loading.isLoading,
+    }),
   },
   created() {
     this.getTodos();
@@ -33,3 +45,10 @@ export default {
   },
 };
 </script>
+
+<style lang="css" scoped>
+.loading-indicator {
+  display: block;
+  margin: 0 auto;
+}
+</style>

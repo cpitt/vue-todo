@@ -4,6 +4,7 @@ import addTodo from './addTodo';
 import toggleComplete from './toggleComplete';
 import editTodo from './editTodo';
 
+export { actionTypes };
 export default {
   [actionTypes.TODOS_FETCH]: getTodos,
   [actionTypes.TODOS_ADD]: addTodo,
