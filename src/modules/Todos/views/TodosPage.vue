@@ -32,7 +32,7 @@ export default {
       isLoading: state => state.loading.isLoading,
     }),
   },
-  created() {
+  mounted() {
     this.getTodos();
   },
   methods: {

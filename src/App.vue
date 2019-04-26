@@ -8,10 +8,17 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer />
+      <v-toolbar-items>
+        <v-btn flat to="/">Home</v-btn>
+        <v-btn flat to="/todos">App</v-btn>
+        <v-btn flat to="/store">Store</v-btn>
+      </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </v-content>
     <v-footer app />
   </v-app>

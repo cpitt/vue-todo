@@ -3,7 +3,7 @@
     <v-list-tile-action>
       <v-checkbox
         data-test="todos-list-item-checkbox"
-        :checked="todo.complete"
+        :checked="todo.completed"
         @change="toggleTodo"
       />
     </v-list-tile-action>
