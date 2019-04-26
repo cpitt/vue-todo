@@ -1,9 +1,9 @@
-import TodosList from './views/TodosList.vue';
+import TodosPage from './views/TodosPage.vue';
 
 export default [
   {
     path: '',
     name: 'Todo List',
-    component: TodosList,
+    component: TodosPage,
   },
 ];
