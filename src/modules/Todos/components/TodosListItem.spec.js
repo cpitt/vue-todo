@@ -48,9 +48,8 @@ describe('TodosListItem', () => {
   describe('#updateTodo', () => {
     const event = { target: { value: 'hi' } };
     it('should call toggleIsEditing', () => {
-      wrapper.setMethods({ toggleIsEditing: jest.fn() });
       wrapper.vm.updateTodo(event);
-      expect(wrapper.vm.toggleIsEditing).toHaveBeenCalled();
+      expect(wrapper.vm.isEditing).toBe(false);
     });
 
     it('should emit todo-edit event', () => {

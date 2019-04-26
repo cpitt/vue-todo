@@ -9,7 +9,7 @@ describe('toggleComplete', () => {
     toggleComplete({ commit }, { todo });
     expect(commit).toHaveBeenCalledWith(TODOS_TODO_UPDATE, {
       todo,
-      complete: !todo.complete,
+      completed: !todo.completed,
     });
   });
 });
